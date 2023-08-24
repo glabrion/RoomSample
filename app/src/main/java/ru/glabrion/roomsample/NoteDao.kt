@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface NoteDao {
     @Query("SELECT * FROM note_table ORDER BY text ASC")
-    fun getAlphabetizedWords(): Flow<List<Note>>
+    suspend fun getAlphabetizedWords(): List<Note>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(note: Note)
